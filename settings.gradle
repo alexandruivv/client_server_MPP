@@ -1,0 +1,9 @@
+rootProject.name = 'MotoAppSockets'
+
+include 'motoapp-model'
+include 'motoapp-persistence'
+include 'motoapp-server'
+include 'motoapp-client'
+include 'motoapp-networking'
+include 'motoapp-service'
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="motoapp-client_main" target="1.8" />
+      <module name="motoapp-client_test" target="1.8" />
+      <module name="motoapp-model_main" target="1.8" />
+      <module name="motoapp-model_test" target="1.8" />
+      <module name="motoapp-networking_main" target="1.8" />
+      <module name="motoapp-networking_test" target="1.8" />
+      <module name="motoapp-persistence_main" target="1.8" />
+      <module name="motoapp-persistence_test" target="1.8" />
+      <module name="motoapp-server_main" target="1.8" />
+      <module name="motoapp-server_test" target="1.8" />
+      <module name="motoapp-service_main" target="1.8" />
+      <module name="motoapp-service_test" target="1.8" />
+      <module name="MotoAppClient_main" target="1.8" />
+      <module name="MotoAppClient_test" target="1.8" />
+      <module name="MotoAppModel_main" target="1.8" />
+      <module name="MotoAppModel_test" target="1.8" />
+      <module name="MotoAppNetworking_main" target="1.8" />
+      <module name="MotoAppNetworking_test" target="1.8" />
+      <module name="MotoAppPersistence_main" target="1.8" />
+      <module name="MotoAppPersistence_test" target="1.8" />
+      <module name="MotoAppServer_main" target="1.8" />
+      <module name="MotoAppServer_test" target="1.8" />
+      <module name="MotoAppServices_main" target="1.8" />
+      <module name="MotoAppServices_test" target="1.8" />
+      <module name="MotoAppSockets_main" target="1.8" />
+      <module name="MotoAppSockets_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

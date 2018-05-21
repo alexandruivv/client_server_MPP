@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="motoapp.client.gui.MainController">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="603.0" prefWidth="208.0" style="-fx-background-color: #F36E28;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="263.0" prefWidth="208.0" style="-fx-background-color: #F36E28;">
+               <children>
+                  <ImageView fitHeight="129.0" fitWidth="127.0" layoutX="3.0" layoutY="5.0" pickOnBounds="true">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@default-user.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="15.55" radius="5.5275" width="8.56" />
+                     </effect>
+                  </ImageView>
+                  <Label layoutX="23.0" layoutY="141.0" style="-fx-font-family: &quot;Arial rounded mt bold&quot;; -fx-font-size: 20; -fx-text-fill: #333333;" text="Bun venit,">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="usernameText" layoutX="33.0" layoutY="171.0" style="-fx-font-family: &quot;Arimo&quot;; -fx-font-size: 15; -fx-text-fill: #333333;" text="USERNAME" />
+               </children>
+            </VBox>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </VBox>
+   </left>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="740.0" style="-fx-background-color: #F36E28;">
+               <effect>
+                  <DropShadow height="4.28" radius="1.3475000000000001" width="3.11" />
+               </effect>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER" onMouseClicked="#onLogOut">
+                     <children>
+                        <Label style="-fx-font-family: &quot;Arial rounded mt bold&quot;;" text="Delogare">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ImageView fitHeight="43.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logout.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="tableNrParticipanti" layoutX="25.0" layoutY="56.0" prefHeight="277.0" prefWidth="316.0">
+                    <columns>
+                      <TableColumn fx:id="capacitateCol" prefWidth="162.0" text="Capacitate (cmc)" />
+                        <TableColumn fx:id="inscrisiCol" prefWidth="162.0" text="Nr inscrisi" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="tableEchipe" layoutX="383.0" layoutY="56.0" prefHeight="277.0" prefWidth="406.0">
+                    <columns>
+                      <TableColumn fx:id="numePEchipaCol" prefWidth="275.0" text="Nume participant" />
+                      <TableColumn fx:id="capacitateEchipaCol" minWidth="0.0" prefWidth="130.0" text="Capacitate (cmc)" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="507.0" layoutY="14.0" text="echipa" />
+                  <ComboBox fx:id="echipeBox" layoutX="569.0" layoutY="9.0" onAction="#onSelectionComboBoxChanged" prefWidth="150.0" promptText="Neselectat" />
+                  <VBox alignment="CENTER" layoutX="223.0" layoutY="397.0" prefHeight="261.0" prefWidth="321.0" spacing="40.0" style="-fx-border-color: black;">
+                     <children>
+                        <Label layoutX="340.0" layoutY="397.0" text="Inscriere participant" />
+                        <HBox alignment="CENTER" layoutX="283.0" layoutY="433.0">
+                           <children>
+                              <VBox layoutX="283.0" layoutY="433.0" prefHeight="108.0" prefWidth="97.0">
+                                 <children>
+                                    <Label layoutX="283.0" layoutY="433.0" text="Capacitate">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="Nume">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="31.0" text="Echipa">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0">
+                                 <children>
+                                    <ComboBox fx:id="capacitateIBox" prefWidth="150.0" promptText="Neselectat">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </ComboBox>
+                                    <TextField fx:id="numeIText" layoutX="10.0" layoutY="10.0" promptText="Nume participant">
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <ComboBox fx:id="echipeIBox" layoutX="10.0" layoutY="10.0" prefWidth="150.0" promptText="Neselectat">
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                    </ComboBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Button layoutX="358.0" layoutY="566.0" mnemonicParsing="false" onAction="#onRegisterParticipant" prefHeight="31.0" prefWidth="105.0" text="Inscriere" />
+                     </children>
+                  </VBox>
+                  <Label layoutX="126.0" layoutY="24.0" text="Curse disponibile" />
+                  <Label layoutX="409.0" layoutY="14.0" text="Participanti cu" />
+               </children></AnchorPane>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

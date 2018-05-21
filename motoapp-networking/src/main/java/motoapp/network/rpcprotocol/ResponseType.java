@@ -1,0 +1,6 @@
+package motoapp.network.rpcprotocol;
+
+public enum ResponseType {
+    OK, ERROR, NEW_PARTICIPANT, GET_NR_INSCRISI, GET_NUME_ECHIPE, GET_CAPACITATI, GET_PARTICIPANTI_CURSA, GET_ECHIPA_BY_NAME,
+    GET_CURSA_BY_CAPACITATE
+}

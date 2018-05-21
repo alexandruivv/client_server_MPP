@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MotoAppSockets.iml" filepath="$PROJECT_DIR$/.idea/modules/MotoAppSockets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MotoAppSockets_main.iml" filepath="$PROJECT_DIR$/.idea/modules/MotoAppSockets_main.iml" group="MotoAppSockets" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MotoAppSockets_test.iml" filepath="$PROJECT_DIR$/.idea/modules/MotoAppSockets_test.iml" group="MotoAppSockets" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-client.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-client.iml" group="motoapp-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-client/motoapp-client_main.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-client/motoapp-client_main.iml" group="motoapp-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-client/motoapp-client_test.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-client/motoapp-client_test.iml" group="motoapp-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-model.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-model.iml" group="motoapp-model" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-model/motoapp-model_main.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-model/motoapp-model_main.iml" group="motoapp-model" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-model/motoapp-model_test.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-model/motoapp-model_test.iml" group="motoapp-model" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-networking.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-networking.iml" group="motoapp-networking" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-networking/motoapp-networking_main.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-networking/motoapp-networking_main.iml" group="motoapp-networking" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-networking/motoapp-networking_test.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-networking/motoapp-networking_test.iml" group="motoapp-networking" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-persistence.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-persistence.iml" group="motoapp-persistence" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-persistence/motoapp-persistence_main.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-persistence/motoapp-persistence_main.iml" group="motoapp-persistence" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-persistence/motoapp-persistence_test.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-persistence/motoapp-persistence_test.iml" group="motoapp-persistence" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-server.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-server.iml" group="motoapp-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-server/motoapp-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-server/motoapp-server_main.iml" group="motoapp-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-server/motoapp-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-server/motoapp-server_test.iml" group="motoapp-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-service.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-service.iml" group="motoapp-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-service/motoapp-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-service/motoapp-service_main.iml" group="motoapp-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/motoapp-service/motoapp-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/motoapp-service/motoapp-service_test.iml" group="motoapp-service" />
+    </modules>
+  </component>
+</project>
