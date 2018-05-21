@@ -1,0 +1,87 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "motoapp.server";
+option java_outer_classname = "LoginProto";
+package motoapp.server;
+
+
+
+service IService{
+    rpc login (UserGRPC) returns (GRPCReply);
+    rpc getNrParticipants(RequestGRPC) returns (NrParticipantsList);
+    rpc getNumeEchipe(RequestGRPC) returns (NumeEchipeList);
+    rpc getCapacitati(RequestGRPC) returns (CapacitatiList);
+    rpc getParticipantiDupaEchipa(NumeEchipaGRPC) returns (ParticipantiCursaList);
+    rpc getEchipaDupaNume(NumeEchipaGRPC) returns (Echipa);
+    rpc getCursaDupaCapacitate(CapacitateGRPC) returns (Cursa);
+    rpc saveParticipant(Participant) returns (GRPCReply);
+    rpc increment(stream NrParticipantsGRPC) returns (stream NrParticipantsGRPC);
+}
+
+
+
+message UserGRPC{
+    string username = 1;
+    string password = 2;
+}
+
+message GRPCReply{
+    string status = 1;
+}
+
+message RequestGRPC{
+    string requestType = 1;
+}
+
+message NrParticipantsGRPC{
+    int32 motorCapacity = 1;
+    int32 nrParticipants = 2;
+}
+
+message NumeEchipeList{
+    repeated string numeEchipa = 1;
+}
+
+message CapacitatiList{
+    repeated string capacitati = 1;
+}
+
+
+message NrParticipantsList{
+    repeated NrParticipantsGRPC nrParticipants = 1;
+}
+
+message NumeEchipaGRPC{
+    string nume = 1;
+}
+
+message CapacitateGRPC{
+    string capacitate = 1;
+}
+
+message ParticipantCursaGRPC{
+    string nume = 1;
+    int32 capacitate = 2;
+}
+
+message ParticipantiCursaList{
+    repeated ParticipantCursaGRPC participanti = 1;
+}
+
+message Echipa{
+    int32 id = 1;
+    string nume = 2;
+}
+
+message Cursa{
+    int32 id= 1;
+    string nume = 2;
+    int32 capacitate = 3;
+}
+
+message Participant{
+    int32 id = 1;
+    string nume = 2;
+    int32 idEchipa = 3;
+    int32 idCursa = 4;
+}

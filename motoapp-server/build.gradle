@@ -10,8 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile project(':motoapp-networking')
-    compile project(':motoapp-persistence')
+    compile project (':')
     compile project(':motoapp-service')
     compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
 
