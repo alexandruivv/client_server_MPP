@@ -1,6 +1,8 @@
 package motoapp.persistence.utils;
 
-public class NrParticipanti {
+import java.io.Serializable;
+
+public class NrParticipanti implements Serializable {
     private int capacitate;
     private int nrInscrisi;
 

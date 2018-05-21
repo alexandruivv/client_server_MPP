@@ -1,7 +1,8 @@
 package motoapp.services;
 
-import motoapp.model.Participant;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-public interface IMotoAppObserver {
-    void addParticipant() throws MotoAppException;
+public interface IMotoAppObserver extends Remote{
+    void addParticipant() throws MotoAppException, RemoteException;
 }

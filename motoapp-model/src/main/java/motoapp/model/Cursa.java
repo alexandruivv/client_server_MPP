@@ -1,7 +1,9 @@
 package motoapp.model;
 
 
-public class Cursa implements HasId<Integer> {
+import java.io.Serializable;
+
+public class Cursa implements HasId<Integer>, Serializable {
     private int id;
     private String nume;
     private int capacitate;

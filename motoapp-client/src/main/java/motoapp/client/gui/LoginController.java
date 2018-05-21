@@ -12,17 +12,21 @@ import motoapp.model.Operator;
 import motoapp.services.IMotoAppServer;
 import motoapp.services.MotoAppException;
 
-import java.io.IOException;
+import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-public class LoginController {
+public class LoginController implements Serializable {
 
     private Operator crtUser;
     private IMotoAppServer server;
 
     private MainController mainCtrl;
 
-    Stage mainMotoAppStage;
+    private Stage mainMotoAppStage;
 
+    public LoginController(){
+    }
     @FXML
     TextField usernameText;
 
@@ -34,32 +38,35 @@ public class LoginController {
         usernameText.setText("iair2126");
         passwordText.setText("parola123");
     }
-
     @FXML
     public void on_btnClose_clicked() {
         System.exit(0);
     }
 
     @FXML
-    public void on_btnLogIn(ActionEvent actionEvent){
+    public void on_btnLogIn(ActionEvent actionEvent) throws RemoteException {
         String username = usernameText.getText();
         String password = passwordText.getText();
         crtUser = new Operator(username, password);
         try {
-            server.login(crtUser, mainCtrl);
+            mainCtrl.login(crtUser);
             mainCtrl.setCurrentUser(crtUser);
             mainCtrl.setNrParticipanti();
             mainCtrl.setDataComboBox();
             mainMotoAppStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
-                    mainCtrl.logout();
+                    try {
+                        mainCtrl.logout();
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
                     System.exit(0);
                 }
             });
             mainMotoAppStage.show();
             ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (MotoAppException e) {
+        } catch (MotoAppException|RemoteException e) {
             MessageAlert.showErrorMessage(e.getMessage());
         }
     }

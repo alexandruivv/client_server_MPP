@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.rmi.RemoteException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
@@ -232,7 +233,11 @@ public class MotoAppServerRpcProxy implements IMotoAppServer {
                         Thread tw = new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                handleUpdate((Response)response);
+                                try {
+                                    handleUpdate((Response)response);
+                                } catch (RemoteException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         });
                         tw.start();
@@ -259,7 +264,7 @@ public class MotoAppServerRpcProxy implements IMotoAppServer {
         return response.type() == ResponseType.NEW_PARTICIPANT;
     }
 
-    public void handleUpdate(Response response){
+    public void handleUpdate(Response response) throws RemoteException {
         if(response.type() == ResponseType.NEW_PARTICIPANT){
             try {
                 client.addParticipant();

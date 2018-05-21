@@ -14,6 +14,7 @@ import motoapp.services.IMotoAppObserver;
 import motoapp.services.IMotoAppServer;
 import motoapp.services.MotoAppException;
 
+import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -73,7 +74,7 @@ public class MotoAppServerImpl implements IMotoAppServer {
                     try {
                         System.out.println("Notifying client");
                         motoClient.addParticipant();
-                    } catch (MotoAppException e) {
+                    } catch (MotoAppException|RemoteException e) {
                         System.err.println("Error notifying client " + e);
                     }
                 });

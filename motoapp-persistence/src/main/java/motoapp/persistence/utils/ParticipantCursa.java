@@ -1,6 +1,8 @@
 package motoapp.persistence.utils;
 
-public class ParticipantCursa {
+import java.io.Serializable;
+
+public class ParticipantCursa implements Serializable {
     private String nume;
     private int capacitate;
 

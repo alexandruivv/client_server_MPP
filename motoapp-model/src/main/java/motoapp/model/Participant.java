@@ -1,6 +1,8 @@
 package motoapp.model;
 
-public class Participant implements HasId<Integer> {
+import java.io.Serializable;
+
+public class Participant implements HasId<Integer>, Serializable {
     private int id;
     private String nume;
     private int idEchipa;

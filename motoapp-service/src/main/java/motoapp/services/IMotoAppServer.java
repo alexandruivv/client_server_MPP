@@ -7,14 +7,17 @@ import motoapp.model.Participant;
 import motoapp.persistence.utils.NrParticipanti;
 import motoapp.persistence.utils.ParticipantCursa;
 
-public interface IMotoAppServer {
-    void login(Operator operator, IMotoAppObserver client) throws MotoAppException;
-    void logout(Operator operator, IMotoAppObserver client) throws MotoAppException;
-    void sendParticipant(Participant participant) throws MotoAppException;
-    NrParticipanti[] getNrInscrisi() throws MotoAppException;
-    String[] getEchipe() throws MotoAppException;
-    String[] getCapacitati() throws MotoAppException;
-    ParticipantCursa[] getParticipantiCursaByEchipa(Echipa echipa) throws MotoAppException;
-    Echipa getEchipaByName(String name) throws MotoAppException;
-    Cursa getCursaByCapacitate(int capacitate) throws MotoAppException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface IMotoAppServer extends Remote{
+    void login(Operator operator, IMotoAppObserver client) throws MotoAppException, RemoteException;
+    void logout(Operator operator, IMotoAppObserver client) throws MotoAppException, RemoteException;
+    void sendParticipant(Participant participant) throws MotoAppException, RemoteException;
+    NrParticipanti[] getNrInscrisi() throws MotoAppException, RemoteException;
+    String[] getEchipe() throws MotoAppException, RemoteException;
+    String[] getCapacitati() throws MotoAppException, RemoteException;
+    ParticipantCursa[] getParticipantiCursaByEchipa(Echipa echipa) throws MotoAppException, RemoteException;
+    Echipa getEchipaByName(String name) throws MotoAppException, RemoteException;
+    Cursa getCursaByCapacitate(int capacitate) throws MotoAppException, RemoteException;
 }

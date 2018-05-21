@@ -4,13 +4,10 @@ package motoapp.client.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import motoapp.model.Cursa;
 import motoapp.model.Echipa;
 import motoapp.model.Operator;
@@ -21,13 +18,17 @@ import motoapp.services.IMotoAppObserver;
 import motoapp.services.IMotoAppServer;
 import motoapp.services.MotoAppException;
 
+import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-public class MainController implements IMotoAppObserver {
+
+public class MainController implements IMotoAppObserver, Serializable {
 
     private Operator currentUser;
     private IMotoAppServer server;
 
-    Stage loginStage;
+    private Stage loginStage;
 
     @FXML
     Label usernameText;
@@ -49,7 +50,6 @@ public class MainController implements IMotoAppObserver {
 
     @FXML
     TableColumn<ParticipantCursa, String> capacitateEchipaCol;
-
     @FXML
     ComboBox echipeBox;
 
@@ -62,15 +62,27 @@ public class MainController implements IMotoAppObserver {
     @FXML
     TextField numeIText;
 
+    public MainController(){
+        try {
+            UnicastRemoteObject.exportObject(this,0);
+        } catch (RemoteException e) {
+            System.out.println("Error exporting object "+e);
+        }
+    }
+
+    void login(Operator operator) throws MotoAppException, RemoteException {
+        server.login(operator, this);
+
+    }
 
     @FXML
-    public void onLogOut(MouseEvent mouseEvent) {
+    public void onLogOut(MouseEvent mouseEvent) throws RemoteException {
         logout();
         loginStage.show();
         ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void logout() {
+    void logout() throws RemoteException {
         try {
             server.logout(currentUser, this);
         } catch (MotoAppException e) {
@@ -82,7 +94,7 @@ public class MainController implements IMotoAppObserver {
         this.server = server;
     }
 
-    public void setNrParticipanti() {
+    public void setNrParticipanti() throws RemoteException {
         try {
             NrParticipanti[] nrParticipanti = server.getNrInscrisi();
             tableNrParticipanti.getItems().clear();
@@ -94,7 +106,7 @@ public class MainController implements IMotoAppObserver {
         }
     }
 
-    public void setDataComboBox() {
+    public void setDataComboBox() throws RemoteException {
         try {
             String[] echipe = server.getEchipe();
             echipeBox.getItems().setAll(echipe);
@@ -125,7 +137,7 @@ public class MainController implements IMotoAppObserver {
     }
 
     @FXML
-    public void onSelectionComboBoxChanged(ActionEvent ev) {
+    public void onSelectionComboBoxChanged(ActionEvent ev) throws RemoteException {
         String numeEchipa = echipeBox.getSelectionModel().getSelectedItem().toString();
         Echipa echipa = new Echipa(-1, numeEchipa);
         try {
@@ -140,7 +152,7 @@ public class MainController implements IMotoAppObserver {
     }
 
     @FXML
-    public void onRegisterParticipant(ActionEvent ev) {
+    public void onRegisterParticipant(ActionEvent ev) throws RemoteException {
         String capacitateBox = capacitateIBox.getSelectionModel().getSelectedItem().toString();
         String echipaBox = echipeIBox.getSelectionModel().getSelectedItem().toString();
 
@@ -180,7 +192,7 @@ public class MainController implements IMotoAppObserver {
     }
 
     @Override
-    public void addParticipant() throws MotoAppException {
+    public void addParticipant() throws MotoAppException, RemoteException {
         setNrParticipanti();
     }
 }

@@ -1,6 +1,5 @@
 package motoapp.network.rpcprotocol;
 
-import com.sun.org.apache.regexp.internal.RE;
 import motoapp.model.Cursa;
 import motoapp.model.Echipa;
 import motoapp.model.Operator;
@@ -18,6 +17,7 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.Socket;
+import java.rmi.RemoteException;
 
 public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver {
     private IMotoAppServer server;
@@ -94,7 +94,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         return response;
     }
     private static Response okResponse = new Response.Builder().type(ResponseType.OK).build();
-    private Response handleLOGIN(Request request){
+    private Response handleLOGIN(Request request) throws RemoteException {
         System.out.println("Login request ..."+request.type());
         UserDTO udto=(UserDTO)request.data();
         Operator user= DTOUtils.getFromDTO(udto);
@@ -107,7 +107,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         }
     }
 
-    private Response handleLOGOUT(Request request){
+    private Response handleLOGOUT(Request request) throws RemoteException {
         System.out.println("Logout request... " + request.type());
         UserDTO udto = (UserDTO)request.data();
         Operator operator = DTOUtils.getFromDTO(udto);
@@ -121,7 +121,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         }
     }
 
-    private Response handleGET_NR_INSCRISI(Request request){
+    private Response handleGET_NR_INSCRISI(Request request) throws RemoteException {
         System.out.println("Nr inscrisi request ..." + request.type());
         try{
             NrParticipanti[] nrParticipanti = server.getNrInscrisi();
@@ -133,7 +133,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         }
     }
 
-    private Response handleGET_NUME_ECHIPE(Request request){
+    private Response handleGET_NUME_ECHIPE(Request request) throws RemoteException {
         System.out.println("Nume echipe request ..." + request.type());
         try{
             String[] echipe = server.getEchipe();
@@ -144,7 +144,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         }
     }
 
-    private Response handleGET_CAPACITATI(Request request){
+    private Response handleGET_CAPACITATI(Request request) throws RemoteException {
         System.out.println("Capacitati request... " + request.type());
         try {
             String[] capacitati = server.getCapacitati();
@@ -155,7 +155,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         }
     }
 
-    private Response handleGET_PARTICIPANTI_CURSA(Request request){
+    private Response handleGET_PARTICIPANTI_CURSA(Request request) throws RemoteException {
         System.out.println("Participanti cursa request ... " + request.type());
         EchipaDTO echipaDTO = (EchipaDTO)request.data();
         Echipa echipa = DTOUtils.getFromDTO(echipaDTO);
@@ -169,7 +169,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         }
     }
 
-    private Response handleGET_ECHIPA_BY_NAME(Request request){
+    private Response handleGET_ECHIPA_BY_NAME(Request request) throws RemoteException {
         System.out.println("Echipa by name request ..." + request.type());
         try {
             Echipa echipa = server.getEchipaByName((String)request.data());
@@ -181,7 +181,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         }
     }
 
-    private Response handleGET_CURSA_BY_CAPACITATE(Request request){
+    private Response handleGET_CURSA_BY_CAPACITATE(Request request) throws RemoteException {
         System.out.println("Cursa by capacitate request ..." + request.type());
         try {
             Cursa cursa = server.getCursaByCapacitate((Integer)request.data());
@@ -193,7 +193,7 @@ public class MotoAppClientReflectionWorker implements Runnable, IMotoAppObserver
         }
     }
 
-    private Response handleSEND_PARTICIPANT(Request request){
+    private Response handleSEND_PARTICIPANT(Request request) throws RemoteException {
         System.out.println("Add new participant request..." + request.type());
         ParticipantDTO participantDTO = (ParticipantDTO)request.data();
         Participant participant = DTOUtils.getFromDTO(participantDTO);

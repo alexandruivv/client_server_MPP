@@ -1,26 +1,28 @@
 package motoapp.server;
 
-import motoapp.network.utils.AbstractServer;
-import motoapp.network.utils.MotoAppRpcConcurrentServer;
-import motoapp.network.utils.ServerException;
 import motoapp.persistence.CurseDBRepository;
 import motoapp.persistence.EchipeDBRepository;
 import motoapp.persistence.OperatoriDBRepository;
 import motoapp.persistence.ParticipantiDBRepository;
 import motoapp.services.IMotoAppServer;
 
+
 import java.io.IOException;
 
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Properties;
 
-public class StartRpcServer {
+public class StartRMIServer {
     private static int defaultPort = 55555;
 
     public static void main(String[] args) {
         // UserRepository userRepo=new UserRepositoryMock();
         Properties serverProps = new Properties();
         try {
-            serverProps.load(StartRpcServer.class.getResourceAsStream("/motoappserver.properties"));
+            serverProps.load(StartRMIServer.class.getResourceAsStream("/motoappserver.properties"));
             System.out.println("Server properties set. ");
             serverProps.list(System.out);
         } catch (IOException e) {
@@ -33,19 +35,21 @@ public class StartRpcServer {
         CurseDBRepository curseDBRepository = new CurseDBRepository(serverProps);
         IMotoAppServer motoAppServerImp = new MotoAppServerImpl(userRepo, participantiRepo, echipeDBRepository,
                 curseDBRepository);
-        int chatServerPort = defaultPort;
-        try {
-            chatServerPort = Integer.parseInt(serverProps.getProperty("motoapp.server.port"));
-        } catch (NumberFormatException nef) {
-            System.err.println("Wrong  Port Number" + nef.getMessage());
-            System.err.println("Using default port " + defaultPort);
+        System.setProperty("java.security.policy","file:./MotoApp.policy");
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
         }
-        System.out.println("Starting server on port: " + chatServerPort);
-        AbstractServer server = new MotoAppRpcConcurrentServer(chatServerPort, motoAppServerImp);
-        try {
-            server.start();
-        } catch (ServerException e) {
-            System.err.println("Error starting the server" + e.getMessage());
+
+        try{
+
+            String name = serverProps.getProperty("motoapp.rmi.serverID", "Moto");
+            IMotoAppServer stub = (IMotoAppServer) UnicastRemoteObject.exportObject(motoAppServerImp, 0);
+            Registry registry = LocateRegistry.getRegistry();
+            System.out.println("before binding");
+            registry.rebind(name, stub);
+            System.out.println("Chat server   bound");
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 }
